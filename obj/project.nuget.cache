@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "5Kljlu0oD30=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\akshi\\Documents\\GitHub\\LOGIC_Assignment_2\\RunDafny.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\akshi\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\akshi\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\akshi\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\akshi\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.36\\microsoft.netcore.app.host.win-x64.6.0.36.nupkg.sha512"
+  ],
+  "logs": []
+}

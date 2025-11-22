@@ -14,7 +14,7 @@ function Trib(n: int): int
 
 // =========================
 // IMPLEMENTATION
-// =========================
+
 
 method Tribonacci(n: int) returns (result: int)
   requires n >= 0

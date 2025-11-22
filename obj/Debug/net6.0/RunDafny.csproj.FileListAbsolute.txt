@@ -1,0 +1,15 @@
+C:\Users\akshi\Documents\GitHub\LOGIC_Assignment_2\bin\Debug\net6.0\RunDafny.exe
+C:\Users\akshi\Documents\GitHub\LOGIC_Assignment_2\bin\Debug\net6.0\RunDafny.deps.json
+C:\Users\akshi\Documents\GitHub\LOGIC_Assignment_2\bin\Debug\net6.0\RunDafny.runtimeconfig.json
+C:\Users\akshi\Documents\GitHub\LOGIC_Assignment_2\bin\Debug\net6.0\RunDafny.dll
+C:\Users\akshi\Documents\GitHub\LOGIC_Assignment_2\bin\Debug\net6.0\RunDafny.pdb
+C:\Users\akshi\Documents\GitHub\LOGIC_Assignment_2\obj\Debug\net6.0\RunDafny.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\akshi\Documents\GitHub\LOGIC_Assignment_2\obj\Debug\net6.0\RunDafny.AssemblyInfoInputs.cache
+C:\Users\akshi\Documents\GitHub\LOGIC_Assignment_2\obj\Debug\net6.0\RunDafny.AssemblyInfo.cs
+C:\Users\akshi\Documents\GitHub\LOGIC_Assignment_2\obj\Debug\net6.0\RunDafny.csproj.CoreCompileInputs.cache
+C:\Users\akshi\Documents\GitHub\LOGIC_Assignment_2\obj\Debug\net6.0\RunDafny.sourcelink.json
+C:\Users\akshi\Documents\GitHub\LOGIC_Assignment_2\obj\Debug\net6.0\RunDafny.dll
+C:\Users\akshi\Documents\GitHub\LOGIC_Assignment_2\obj\Debug\net6.0\refint\RunDafny.dll
+C:\Users\akshi\Documents\GitHub\LOGIC_Assignment_2\obj\Debug\net6.0\RunDafny.pdb
+C:\Users\akshi\Documents\GitHub\LOGIC_Assignment_2\obj\Debug\net6.0\RunDafny.genruntimeconfig.cache
+C:\Users\akshi\Documents\GitHub\LOGIC_Assignment_2\obj\Debug\net6.0\ref\RunDafny.dll

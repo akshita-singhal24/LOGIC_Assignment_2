@@ -7,7 +7,8 @@ method FindFirstNegative(a: array<int>) returns (index: int)
     var i := 0;
     while i < a.Length
         invariant 0 <= i <= a.Length
-        invariant forall k :: 0 <= k < i ==> a[k] >= 0
+        // MISSING: correctness invariant for scanned elements!
+        //invariant forall k :: 0 <= k < i ==> a[k] >= 0
         decreases a.Length - i
     {
         if a[i] < 0 {
@@ -20,13 +21,9 @@ method FindFirstNegative(a: array<int>) returns (index: int)
 
 method Main()
 {
-    var a := new int[4];
-    a[0] := 10; a[1] := 5; a[2] := -1; a[3] := 20;
-    var index1 := FindFirstNegative(a);
-    print "Array 1: First negative at index: ", index1, "\n";
-
-    var b := new int[3];
-    b[0] := 1; b[1] := 2; b[2] := 3;
-    var index2 := FindFirstNegative(b);
-    print "Array 2: First negative at index: ", index2, "\n";
+    var arr := new int[3];
+    arr[0] := -5; arr[1] := 4; arr[2] := -2;
+    var idx := FindFirstNegative(arr);
+    assert idx == 0; // This will NOT VERIFY
+    print "First negative index: ", idx, "\n";
 }
