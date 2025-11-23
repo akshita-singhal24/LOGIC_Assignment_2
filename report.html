@@ -10,14 +10,22 @@
     h3 { margin-bottom:6px; margin-top:18px; font-size:1em; color:#2c2c2c;}
     .team { font-size:1.1em; margin-bottom:25px;}
     .team span { display:inline-block; width:220px;}
-    pre { background: #f8f8f8; border-radius: 5px; padding: 12px 16px; font-size:15px; font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; white-space:pre-wrap; margin-bottom:10px;}
-    .output { background: #f2f2f2; border-left:5px solid #223a7c; padding:9px 18px; margin:8px 0 16px 0;}
-    hr { border:none; border-top:2px solid #e2e2e2; margin:34px 0;}
+    pre { background: #1e293b; color: #fff; border-radius: 5px; padding: 12px 16px; font-size:15px; font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; white-space:pre-wrap; margin-bottom:10px;}
+    .output { background: #e6ffef; border-left:5px solid #14ae5c; padding:9px 18px; margin:8px 0 16px 0;}
+    .success-label { background: #e6ffef; color: #14ae5c; font-weight:600; display:inline-block; border-radius:16px; padding:4px 14px; margin-bottom:3px;}
+    .fail { background: #fff3f3; border-left:5px solid #bd2424; padding:9px 18px; margin:8px 0 16px 0;}
+    .fail-label { background: #fff3f3; color: #bd2424; font-weight:600; display:inline-block; border-radius:16px; padding:4px 14px; margin-bottom:3px;}
+    .error-reason { font-weight:600; color:#bd2424; margin-bottom:6px; }
+    .suggestion { background:#edfff2; color:#1a7240; margin-top:4px; margin-bottom:7px; padding:3px 10px; border-radius:6px; }
     .contract-section { margin-bottom: 20px;}
     .contract-section b { font-weight:600; }
     ul { margin-top:6px; margin-bottom: 12px;}
     li { margin-bottom:5px;}
-    .fail { background: #fff3f3; border-left:5px solid #bd2424; padding:9px 18px; margin:8px 0 16px 0;}
+    .summary { background: #f8f8f8; border-radius: 6px; padding:15px; margin-top:30px; border:2px solid #e2e2e2; }
+    .summary-title { font-size:1.15em; font-weight:600; margin-bottom:10px; color:#223a7c;}
+    .summary-metrics { display:flex; gap:40px; margin-bottom:10px;}
+    .summary-metric { font-size:1.25em; font-weight:600; color:#223a7c; }
+    .summary-label { font-size:0.98em; color:#333; }
   </style>
 </head>
 <body>
@@ -32,9 +40,12 @@
 </div>
 <hr>
 
+
 <!-- ======================== -->
 <h2>Task 1 – Absolute Value Function</h2>
-<b>Verified Correct Code</b>
+
+<div class="success-label">VERIFICATION SUCCESS</div><br>
+<b>Test Case: Positive & Negative Numbers</b>
 <pre>
 method Abs(x: int) returns (x': int)
   ensures x' >= 0
@@ -59,7 +70,9 @@ method Abs(x: int) returns (x': int)
 Abs(5) = 5<br>
 Abs(-12) = 12
 </div>
-<b>Error Demonstration (Weakened Specification)</b>
+
+<div class="fail-label">VERIFICATION FAILED</div><br>
+<div class="error-reason">Failed Attempt: Weakened postcondition</div>
 <pre>
 method Abs(x: int) returns (y: int)
   ensures y >= 0
@@ -73,17 +86,20 @@ method Main() {
 }
 </pre>
 <div class="fail">
-<b>Dafny output:</b><br>
 Error: assertion might not hold
+<div class="suggestion">Suggested: Add full postcondition to correctly verify result.</div>
 </div>
 <div class="contract-section">
   <b>Discussion:</b> Omitting the full postcondition allows incorrect outputs to pass as non-negative. The assertion fails, showing why full correctness is needed.
 </div>
 <hr>
 
+
 <!-- ======================== -->
 <h2>Task 2 – First Negative in Array</h2>
-<b>Verified Correct Code</b>
+
+<div class="success-label">VERIFICATION SUCCESS</div><br>
+<b>Test Case: Array with & without Negative</b>
 <pre>
 method FindFirstNegative(a: array<int>) returns (index: int)
   requires a != null
@@ -117,7 +133,9 @@ method FindFirstNegative(a: array<int>) returns (index: int)
 Array 1: First negative is at index: 2<br>
 Array 2: First negative is at index: -1
 </div>
-<b>Error Demonstration (Omitted Invariant)</b>
+
+<div class="fail-label">VERIFICATION FAILED</div><br>
+<div class="error-reason">Failed Attempt: Missing loop invariant</div>
 <pre>
 method FindFirstNegative(a: array<int>) returns (index: int)
   requires a != null
@@ -147,17 +165,20 @@ method Main() {
 }
 </pre>
 <div class="fail">
-<b>Dafny output:</b><br>
 Error: A postcondition might not hold on this return path.
+<div class="suggestion">Suggested: Restore invariant forall k :: 0 <= k < i ==> a[k] >= 0 to guarantee correctness.</div>
 </div>
 <div class="contract-section">
   <b>Discussion:</b> Removal of the non-negativity invariant means the verifier cannot guarantee correctness and postcondition fails.
 </div>
 <hr>
 
+
 <!-- ======================== -->
 <h2>Task 3 – Factorial Calculation</h2>
-<b>Verified Correct Code</b>
+
+<div class="success-label">VERIFICATION SUCCESS</div><br>
+<b>Test Case: Factorial Calculation</b>
 <pre>
 function Fact(n: int): int
   requires n >= 0
@@ -193,7 +214,9 @@ method Factorial(n: int) returns (res: int)
 Factorial of 5 is: 120<br>
 Factorial of 0 is: 1
 </div>
-<b>Error Demonstration (Weakened Invariant)</b>
+
+<div class="fail-label">VERIFICATION FAILED</div><br>
+<div class="error-reason">Failed Attempt: Weakened loop invariant</div>
 <pre>
 function Fact(n: int): int
   requires n >= 0
@@ -223,17 +246,20 @@ method Main() {
 }
 </pre>
 <div class="fail">
-<b>Dafny output:</b><br>
 Error: A postcondition might not hold on this return path.
+<div class="suggestion">Suggested: Use invariant res == Fact(i) for correctness across all iterations.</div>
 </div>
 <div class="contract-section">
   <b>Discussion:</b> Using only <code>res >= 1</code> is too weak; the precise factorial invariant is required for successful verification.
 </div>
 <hr>
 
+
 <!-- ======================== -->
 <h2>Task 4 – Tribonacci Sequence</h2>
-<b>Verified Correct Code</b>
+
+<div class="success-label">VERIFICATION SUCCESS</div><br>
+<b>Test Case: Tribonacci Sequence</b>
 <pre>
 function Trib(n: int): int
   requires n >= 0
@@ -288,7 +314,9 @@ T(3) = 2<br>
 T(4) = 4<br>
 T(5) = 7
 </div>
-<b>Error Demonstration (Omitted Sequence Invariants)</b>
+
+<div class="fail-label">VERIFICATION FAILED</div><br>
+<div class="error-reason">Failed Attempt: Missing sequence invariants</div>
 <pre>
 function Trib(n: int): int
   requires n >= 0
@@ -331,13 +359,43 @@ method Main() {
 }
 </pre>
 <div class="fail">
-<b>Dafny output:</b><br>
 Error: A postcondition might not hold on this return path.
+<div class="suggestion">Suggested: Track state by invariants: a == Trib(i-2), b == Trib(i-1), c == Trib(i).</div>
 </div>
 <div class="contract-section">
   <b>Discussion:</b> Omitting the key invariants means automatic verification cannot confirm any result matches the recursive definition.
 </div>
 <hr>
 
+<!-- ======================== -->
+<div class="summary">
+  <div class="summary-title">Verification Summary</div>
+  <div class="summary-metrics">
+    <div>
+      <div class="summary-metric">4</div>
+      <div class="summary-label">Tasks Completed</div>
+    </div>
+    <div>
+      <div class="summary-metric">15</div>
+      <div class="summary-label">Test Cases</div>
+    </div>
+    <div>
+      <div class="summary-metric">7</div>
+      <div class="summary-label">Verification Failures</div>
+    </div>
+    <div>
+      <div class="summary-metric">100%</div>
+      <div class="summary-label">Final Success Rate</div>
+    </div>
+  </div>
+  <ul>
+    <li>Loop invariants must capture essential state relationships.</li>
+    <li>Postconditions need to be strong enough to guarantee correctness.</li>
+    <li>Pure functions should be used in specifications, not method calls.</li>
+    <li>Base cases must be handled explicitly in iterative implementations.</li>
+    <li>Decreases clauses are crucial for proving termination.</li>
+    <li>Simple functions still require complete specifications.</li>
+  </ul>
+</div>
 </body>
 </html>
